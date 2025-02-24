@@ -24,8 +24,8 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Unit Tests
-        run: python -m unittest discover -s .  # Assuming your tests are in the 'tests' folder
+      - name: Run Unit Tests in Docker
+        run: docker run --name contact_book_container contact-book-app python -m unittest discover -s .  # Assuming your tests are in the 'tests' folder
 
   dockerize:
     runs-on: ubuntu-latest

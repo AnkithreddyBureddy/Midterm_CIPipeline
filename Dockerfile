@@ -1,14 +1,16 @@
-# Use the official Python image from the Docker Hub
-FROM python:3.9
+# Dockerfile
 
-# Set the working directory inside the container
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
+# Copy the application files into the container
 COPY . /app
 
-# Install any needed dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Install dependencies (make sure requirements.txt is in the root of your repo)
+RUN pip install -r requirements.txt
 
-# Run the tests (assuming they are in 'tests' directory)
-CMD ["python", "-m", "unittest", "discover", "-s", "tests"]
+# Expose the necessary port (if applicable)
+EXPOSE 5000
+
+# Command to run the app (this is just an example)
+CMD ["python", "calculator.py"]
